@@ -1,0 +1,35 @@
+{
+    "name": "mafia-api",
+    "version": "1.0.0",
+    "description": "back-end for mafia project",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "nodemon index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://gitlab.com/ordinaryask/mafia-api.git"
+    },
+    "keywords": [
+        "mafia",
+        "backend"
+    ],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://gitlab.com/ordinaryask/mafia-api/issues"
+    },
+    "homepage": "https://gitlab.com/ordinaryask/mafia-api#readme",
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "dotenv": "^10.0.0",
+        "express": "^4.17.1",
+        "jsonwebtoken": "^8.5.1",
+        "mongoose": "^6.0.4"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.12",
+        "prettier": "^2.3.2"
+    }
+}

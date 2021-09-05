@@ -1,0 +1,28 @@
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "12345678"
+}
+
+###
+
+POST http://localhost:3000/api/auth/checkUsername
+Content-Type: application/json
+
+{
+  "username": "test"
+}
+
+###
+
+POST http://localhost:3000/api/auth/authenticate
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "12345678"
+}
+
+###
