@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cf96e5bd-f8cb-4d4d-8fdb-14100e9bccab" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app-constants/constants.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/functions/mongoConnect.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/middlewares/registrationMiddlewares/isUserExist.middleware.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/models/user.model.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/auth/authRouter.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/auth/login/authenticate.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/auth/registration/register.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/rootRouter.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test_queries.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +34,22 @@
   <component name="RestClientSettings">
     <option name="REQUEST_HISTORY">
       <list>
+        <RestClientRequest>
+          <option name="httpMethod" value="POST" />
+          <option name="urlBase" value="http://localhost:3000/api/auth/authenticate" />
+          <option name="urlPath" value="" />
+          <option name="headers">
+            <list>
+              <KeyValuePair>
+                <option name="key" value="Content-Type" />
+                <option name="value" value="application/json" />
+              </KeyValuePair>
+            </list>
+          </option>
+          <option name="haveTextToSend" value="true" />
+          <option name="textToSend" value="{&#10;  &quot;username&quot;: &quot;test&quot;,&#10;  &quot;password&quot;: &quot;12345678&quot;&#10;}" />
+          <option name="filesToSend" value="" />
+        </RestClientRequest>
         <RestClientRequest>
           <option name="httpMethod" value="POST" />
           <option name="urlBase" value="http://localhost:3000/api/auth/checkUsername" />
@@ -82,15 +85,19 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="HTTP Request.test_queries#2">
+  <component name="RunManager" selected="HTTP Request.test_queries#3">
     <configuration name="test_queries#1" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/test_queries.http" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="test_queries#2" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/test_queries.http" index="2" runType="Run single request">
       <method v="2" />
     </configuration>
+    <configuration name="test_queries#3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" path="$PROJECT_DIR$/test_queries.http" index="3" runType="Run single request">
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.test_queries#3" />
         <item itemvalue="HTTP Request.test_queries#2" />
         <item itemvalue="HTTP Request.test_queries#1" />
       </list>
@@ -104,7 +111,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1630849034820</updated>
-      <workItem from="1630849036032" duration="7586000" />
+      <workItem from="1630849036032" duration="7948000" />
+      <workItem from="1630951246751" duration="477000" />
     </task>
     <servers />
   </component>
@@ -121,5 +129,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
