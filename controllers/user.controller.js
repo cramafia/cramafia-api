@@ -1,7 +1,7 @@
 const { UserModel } = require('../models/user.model')
 
 class UserController {
-    static async isExist (username) {
+    static async isExist(username) {
         try {
             return !!(await UserModel.findOne({ username }))
         } catch (e) {
@@ -9,7 +9,7 @@ class UserController {
         }
     }
 
-    static async create (user) {
+    static async create(user) {
         try {
             await (await UserModel.create({ ...user })).save()
         } catch (e) {
@@ -17,7 +17,7 @@ class UserController {
         }
     }
 
-    static async findUserByUsername (username) {
+    static async findUserByUsername(username) {
         try {
             return await UserModel.findOne({ username })
         } catch (e) {
@@ -25,7 +25,7 @@ class UserController {
         }
     }
 
-    static async authorizeUser (user) {
+    static async authorizeUser(user) {
         try {
             return await UserModel.findOne({ ...user })
         } catch (e) {

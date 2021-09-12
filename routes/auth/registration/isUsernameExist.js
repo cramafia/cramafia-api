@@ -1,12 +1,7 @@
 const { authResponses } = require('../../../app-constants/responses')
 
-const isUsernameExist = async (req, res) => {
-    try {
-        res.status(200).json(authResponses.isUserExist.notExist)
-    } catch (e) {
-        res.status(500).json({ message: e.message })
-    }
-}
+const isUsernameExist = async (req, res) =>
+    res.status(200).json(authResponses.isUserExist.notExist)
 
 module.exports = {
     isUsernameExist,

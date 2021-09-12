@@ -3,7 +3,7 @@ const routes = {
         registr: '/register',
         isUserExist: '/isUsernameExist',
         authenticate: '/authenticate',
-    }
+    },
 }
 
 module.exports = {

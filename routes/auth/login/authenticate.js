@@ -3,14 +3,14 @@ const jwt = require('jsonwebtoken')
 const { UserController } = require('../../../controllers/user.controller')
 const { authResponses } = require('../../../app-constants/responses')
 
-const authenticate = async(req, res) => {
+const authenticate = async (req, res) => {
     try {
-        const  { username, password } = req.body
+        const { username, password } = req.body
 
         const user = await UserController.findUserByUsername(username)
 
         if (!user) {
-             return res.status(400).json(authResponses.login.incorrectData)
+            return res.status(400).json(authResponses.login.incorrectData)
         }
 
         const isPasswordsEqual = await bcrypt.compare(password, user.password)

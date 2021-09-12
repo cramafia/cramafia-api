@@ -10,8 +10,13 @@ const { registerValidators } = require('../../utils/validators')
 
 const authRouter = Router()
 
-authRouter.post(routes.auth.registr, ...registerValidators, isUserExist, register)
-authRouter.post(routes.auth.isUserExist, isUserExist, isUsernameExist)
+authRouter.post(
+    routes.auth.registr,
+    ...registerValidators,
+    isUserExist,
+    register
+)
+authRouter.post(routes.auth.isUserExist, isUserExist)
 authRouter.post(routes.auth.authenticate, authenticate)
 
 module.exports = {

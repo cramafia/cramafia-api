@@ -12,7 +12,9 @@ const register = async (req, res) => {
         console.log(errors)
 
         if (!errors.isEmpty()) {
-            return res.status(400).json(authResponses.registration.incorrectData)
+            return res
+                .status(400)
+                .json(authResponses.registration.incorrectData)
         }
 
         const encodedPassword = await bcrypt.hash(password, salt)
