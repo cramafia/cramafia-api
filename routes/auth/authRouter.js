@@ -4,7 +4,6 @@ const {
 } = require('../../middlewares/registrationMiddlewares/isUserExist.middleware')
 const { Router } = require('express')
 const { register } = require('./registration/register')
-const { isUsernameExist } = require('./registration/isUsernameExist')
 const { routes } = require('../../app-constants/routes')
 const { registerValidators } = require('../../utils/validators')
 
@@ -16,7 +15,9 @@ authRouter.post(
     isUserExist,
     register
 )
-authRouter.post(routes.auth.isUserExist, isUserExist)
+authRouter.post(routes.auth.isUserExist, isUserExist, (req, res) =>
+    res.status(200).json(authResponses.isUserExist.notExist)
+)
 authRouter.post(routes.auth.authenticate, authenticate)
 
 module.exports = {
