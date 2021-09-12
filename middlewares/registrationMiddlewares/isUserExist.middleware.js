@@ -6,8 +6,8 @@ const isUserExist = async (req, res, next) => {
         if (await UserController.isExist(req.body.username)) {
             return res.status(400).json(authResponses.isUserExist.exist)
         }
-        console.log(next)
-        // next()
+
+        next()
     } catch (e) {
         res.status(500).json({ message: e.message })
     }
