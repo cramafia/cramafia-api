@@ -1,0 +1,581 @@
+POST http://localhost:3000/api/auth/isUsernameExist
+Content-Type: application/json
+
+{
+  "username": "test1325"
+}
+
+###
+
+POST http://localhost:3000/api/auth/isUsernameExist
+Content-Type: application/json
+
+{
+  "username": "test1325"
+}
+
+###
+
+POST http://localhost:3000/api/auth/isUsernameExist
+Content-Type: application/json
+
+{
+  "username": "test1325"
+}
+
+###
+
+POST http://localhost:3000/api/auth/authenticate
+Content-Type: application/json
+
+{
+  "username": "test24",
+  "password": "1234asd5678"
+}
+
+<> 2021-09-13T003304.400.json
+
+###
+
+POST http://localhost:3000/api/auth/authenticate
+Content-Type: application/json
+
+{
+  "username": "test24",
+  "password": "12345678"
+}
+
+<> 2021-09-13T003302.400.json
+
+###
+
+POST http://localhost:3000/api/auth/authenticate
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "12345678"
+}
+
+<> 2021-09-13T003257.200.json
+
+###
+
+POST http://localhost:3000/api/auth/authenticate
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "1234asd5678"
+}
+
+<> 2021-09-13T003252.400.json
+
+###
+
+POST http://localhost:3000/api/auth/authenticate
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "1234asd5678"
+}
+
+###
+
+POST http://localhost:3000/api/auth/authenticate
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "1234asd5678"
+}
+
+<> 2021-09-13T003051.400.json
+
+###
+
+POST http://localhost:3000/api/auth/authenticate
+Content-Type: application/json
+
+{
+  "username": "test24",
+  "password": "12345678"
+}
+
+<> 2021-09-13T003048.500.json
+
+###
+
+POST http://localhost:3000/api/auth/authenticate
+Content-Type: application/json
+
+{
+  "username": "test24",
+  "password": "12345678"
+}
+
+<> 2021-09-13T003039.500.json
+
+###
+
+POST http://localhost:3000/api/auth/authenticate
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "1234asd5678"
+}
+
+<> 2021-09-13T003036.400.json
+
+###
+
+POST http://localhost:3000/api/auth/authenticate
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "12345678"
+}
+
+<> 2021-09-13T003030.200.json
+
+###
+
+POST http://localhost:3000/api/auth/isUsernameExist
+Content-Type: application/json
+
+{
+  "username": "asdad"
+}
+
+<> 2021-09-13T003026.200.json
+
+###
+
+POST http://localhost:3000/api/auth/isUsernameExist
+Content-Type: application/json
+
+{
+  "username": "test1325"
+}
+
+<> 2021-09-13T003021.200.json
+
+###
+
+POST http://localhost:3000/api/auth/isUsernameExist
+Content-Type: application/json
+
+{
+  "username": "test1325"
+}
+
+<> 2021-09-13T002925.200.json
+
+###
+
+POST http://localhost:3000/api/auth/isUsernameExist
+Content-Type: application/json
+
+{
+  "username": "test1325"
+}
+
+<> 2021-09-13T002906.200.json
+
+###
+
+POST http://localhost:3000/api/auth/isUsernameExist
+Content-Type: application/json
+
+{
+  "username": "test"
+}
+
+<> 2021-09-13T002900.400.json
+
+###
+
+POST http://localhost:3000/api/auth/isUsernameExist
+Content-Type: application/json
+
+{
+  "username": "test"
+}
+
+<> 2021-09-13T002822.404.html
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "test12345",
+  "password": "12345"
+}
+
+<> 2021-09-13T002815.400.json
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "12345"
+}
+
+<> 2021-09-13T002809.400.json
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "te",
+  "password": "12345678"
+}
+
+<> 2021-09-13T002804.400.json
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "te",
+  "password": "12345678"
+}
+
+<> 2021-09-13T002722.500.json
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "te",
+  "password": "12345678"
+}
+
+<> 2021-09-13T002617.500.json
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "12345678"
+}
+
+<> 2021-09-13T001138.400.json
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "te",
+  "password": "12345678"
+}
+
+<> 2021-09-13T000738.500.json
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "te",
+  "password": "12345678"
+}
+
+<> 2021-09-13T000426.200.json
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "test1342356",
+  "password": "12345678"
+}
+
+<> 2021-09-13T000417.400.json
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "test1342356",
+  "password": "12345678"
+}
+
+<> 2021-09-13T000414.200.json
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "test134235",
+  "password": "12345678"
+}
+
+<> 2021-09-13T000408.200.json
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "test134",
+  "password": "12345678"
+}
+
+<> 2021-09-13T000400.400.json
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "test134",
+  "password": "12345678"
+}
+
+<> 2021-09-13T000324.500.json
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "test1",
+  "password": "12345678"
+}
+
+<> 2021-09-13T000315.400.json
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "12345678"
+}
+
+<> 2021-09-13T000312.400.json
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "test1",
+  "password": "12345678"
+}
+
+<> 2021-09-13T000142.500.json
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "12345678"
+}
+
+<> 2021-09-13T000138.400.json
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "test1",
+  "password": "12345678"
+}
+
+<> 2021-09-13T000107.500.json
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "12345678"
+}
+
+<> 2021-09-13T000054.400.json
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "12345678"
+}
+
+<> 2021-09-13T000003.400.json
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "12345678"
+}
+
+<> 2021-09-12T235942.404.html
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "12345678"
+}
+
+<> 2021-09-12T235916.404.html
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "12345678"
+}
+
+<> 2021-09-12T235855.404.html
+
+###
+
+POST http://localhost:3000/api/auth/authenticate
+Content-Type: application/json
+
+{
+  "username": "test24",
+  "password": "1234asd5678"
+}
+
+<> 2021-09-12T235820-1.500.json
+
+###
+
+POST http://localhost:3000/api/auth/authenticate
+Content-Type: application/json
+
+{
+  "username": "test24",
+  "password": "12345678"
+}
+
+<> 2021-09-12T235820.500.json
+
+###
+
+POST http://localhost:3000/api/auth/authenticate
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "1234asd5678"
+}
+
+<> 2021-09-12T235820.400.json
+
+###
+
+POST http://localhost:3000/api/auth/authenticate
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "12345678"
+}
+
+<> 2021-09-12T235820.200.json
+
+###
+
+POST http://localhost:3000/api/auth/isUsernameExist
+Content-Type: application/json
+
+{
+  "username": "asdad"
+}
+
+<> 2021-09-12T235819-4.404.html
+
+###
+
+POST http://localhost:3000/api/auth/isUsernameExist
+Content-Type: application/json
+
+{
+  "username": "test"
+}
+
+<> 2021-09-12T235819-3.404.html
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "test",
+  "password": "12345"
+}
+
+<> 2021-09-12T235819-2.404.html
+
+###
+
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "te",
+  "password": "12345678"
+}
+
+<> 2021-09-12T235819-1.404.html
+
+###
+

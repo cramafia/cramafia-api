@@ -1,0 +1,3 @@
+{
+    "message": "users validation failed: username: Path `username` (`te`) is shorter than the minimum allowed length (4)."
+}
