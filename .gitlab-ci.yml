@@ -16,18 +16,23 @@
 image: node:latest
 
 before_script:
-  - apt-get update -qy
-  - apt-get install -y ruby-dev
-  - gem install dpl
+    - apt-get update -qy
+    - apt-get install -y ruby-dev
+    - gem install dpl
 
-stages:          # List of stages for jobs, and their order of execution
-  - deploy
+stages: # List of stages for jobs, and their order of execution
+    - test
+    - deploy
 
+test-job:
+    stage: test
+    script:
+        - npm run test
 
-deploy-job:      # This job runs in the deploy stage.
-  stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
-  script:
-    - dpl --provider=heroku --app=$HEROKU_APP_STAGING --api-key=$HEROKU_API_KEY
-    - echo "Application successfully deployed."
-  only:
-    - develop
+deploy-job: # This job runs in the deploy stage.
+    stage: deploy # It only runs when *both* jobs in the test stage complete successfully.
+    script:
+        - dpl --provider=heroku --app=$HEROKU_APP_STAGING --api-key=$HEROKU_API_KEY
+        - echo "Application successfully deployed."
+    only:
+        - develop
