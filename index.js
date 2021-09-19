@@ -9,6 +9,8 @@ const port = process.env.PORT || 3000
 app.use(express.json())
 app.use('/api', rootRouter)
 
+app.get('/', (req, res) => res.send('mafia public api staging'))
+
 app.listen(port, async () => {
     try {
         await connectDB(process.env.DB_CONNECTION_URL)
