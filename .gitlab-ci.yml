@@ -19,6 +19,7 @@ before_script:
     - apt-get update -qy
     - apt-get install -y ruby-dev
     - gem install dpl
+    - npm i
 
 stages: # List of stages for jobs, and their order of execution
     - test
