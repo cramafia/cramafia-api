@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "lib": ["es2021"],
+        "lib": ["es2021", "dom"],
         "module": "commonjs",
         "target": "es2021",
 
@@ -10,8 +10,8 @@
         "moduleResolution": "node",
         "allowJs": true, 
         "paths": {
-            "*": ["node_modules/*"]
-            /*"@shared/*": [] */ // todo: shared socket event names?
+            "*": ["node_modules/*"],
+            "@shared/*": [ "src/shared/*" ]
         },
 
         "strict": true,
