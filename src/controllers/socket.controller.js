@@ -7,7 +7,7 @@ class SocketController {
 
     addEventListeners(eventListeners) {
         this.io.on('connection', (socket) => {
-            Object.keys(eventListeners).forEach(key => {
+            Object.keys(eventListeners).forEach((key) => {
                 socket.on(key, eventListeners[key])
             })
         })
@@ -15,5 +15,5 @@ class SocketController {
 }
 
 module.exports = {
-    SocketController
+    SocketController,
 }

@@ -1,12 +1,12 @@
 require('dotenv').config()
 
-const http = require('http')
-const express = require('express')
+import http from 'http'
+import express from 'express'
 
-const { rootRouter } = require('./routes/rootRouter')
-const { connectDB } = require('./functions/mongoConnect')
-const { SocketController } = require('./controllers/socket.controller')
-const eventListeners = require('./socket/eventHandlers')
+import { rootRouter } from './routes/rootRouter'
+import { connectDB } from './functions/mongoConnect'
+import { SocketController } from './controllers/socket.controller'
+import eventListeners from './socket/eventHandlers'
 
 const app = express()
 const server = http.createServer(app)
@@ -31,5 +31,5 @@ server.listen(port.toString(), async () => {
 })
 
 module.exports = {
-    Socket
+    Socket,
 }

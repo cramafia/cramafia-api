@@ -5,5 +5,5 @@ const ADD_PEER = 'ADD_PEER'
 module.exports = {
     CONNECTION,
     ADD_PEER,
-    JOIN_ROOM
+    JOIN_ROOM,
 }
