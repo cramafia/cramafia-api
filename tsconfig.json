@@ -1,6 +1,6 @@
 {
     "compilerOptions": {
-        "lib": ["es2021", "dom"],
+        "lib": ["es2021"],
         "module": "commonjs",
         "target": "es2021",
 
@@ -10,8 +10,7 @@
         "moduleResolution": "node",
         "allowJs": true, 
         "paths": {
-            "*": ["node_modules/*"],
-            "@shared/*": [ "src/shared/*" ]
+            "*": ["node_modules/*"]
         },
 
         "strict": true,

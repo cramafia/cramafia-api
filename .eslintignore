@@ -1,3 +1,2 @@
 dist/*
 **/*.d.ts
-/src/public/js/lib/
