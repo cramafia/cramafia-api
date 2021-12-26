@@ -5,8 +5,7 @@
     "main": "dist/index.js",
     "scripts": {
         "build-ts": "tsc",
-        "build": "npm run build-ts && npm run lint && npm run copy-static-assets",
-        "copy-static-assets": "ts-node copyStaticAssets.ts",
+        "build": "npm run build-ts && npm run lint",
         "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix",
         "test": "npx eslint ./",
         "dev": "nodemon dist/index.js",
@@ -39,18 +38,14 @@
         "express-validator": "^6.12.1",
         "jsonwebtoken": "^8.5.1",
         "mongoose": "^6.0.4",
-        "socket.io": "^4.3.1",
-        "socket.io-client": "^4.4.0"
+        "socket.io": "^4.3.1"
     },
     "devDependencies": {
-        "@types/shelljs": "^0.8.10",
         "@typescript-eslint/eslint-plugin": "^5.8.0",
         "@typescript-eslint/parser": "^5.8.0",
         "eslint": "^7.32.0",
         "eslint-config-google": "^0.14.0",
         "nodemon": "^2.0.12",
-        "prettier": "^2.3.2",
-        "shelljs": "^0.8.4",
-        "ts-node": "^10.4.0"
+        "prettier": "^2.3.2"
     }
 }

@@ -1,7 +1,7 @@
 import { Server, Socket } from 'socket.io'
-import { PeerAction } from '../shared/actions/peer.action'
+import { PeerAction } from '../socket/actions/peer.action'
 import { ClientSignal, ServerSignal, ConnectToData }
-    from '../shared/dto/peer.dto'
+    from '../socket/dto/peer.dto'
 
 type SignalHandler = (_: ClientSignal) => void
 
@@ -20,23 +20,20 @@ export class PeerController {
     onPeerJoined(peerSocket: Socket): number {
         const peerUid = this.uidCounter++
 
-        // a notice to prepare for connection with new peer
-        peerSocket.broadcast // to everyone except the newly connected one
-            .to(this.roomId) // in this room
+        peerSocket.broadcast
+            .to(this.roomId)
             .emit(PeerAction.ConnectTo, <ConnectToData>{
                 uids: [peerUid],
                 initiate: false,
             })
 
-        // newly connected initiates connection to others
-        // ! peerUids must not contain peerUid
-        // ? (to add client-side block client should know it's uid)
+        // peerUids mustn't contain peerUid (a self-connect attempt may occur)
+        // todo: consider adding client-side block (with client knowing its uid)
         peerSocket.emit(PeerAction.ConnectTo, <ConnectToData>{
             uids: this.peerUids,
             initiate: true,
         })
 
-        // mediate signals
         const self: PeerController = this
         const signalHandler = function(data: ClientSignal) {
             const addresseeIndex = self.peerIndexByUid(data.addresseeUid)
@@ -73,6 +70,8 @@ export class PeerController {
         this.peerSignalHandlers = []
     }
 
+    private server: Server
+    private roomId: string
     private uidCounter: number = 0
 
     private peerUids: number[] = []
@@ -98,7 +97,4 @@ export class PeerController {
         socket.off(PeerAction.Signal, signalHandler)
         this.server.to(this.roomId).emit(PeerAction.LeavedNet, uid)
     }
-
-    private server: Server
-    private roomId: string
 }

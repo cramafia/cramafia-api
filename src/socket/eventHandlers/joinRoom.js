@@ -1,4 +1,4 @@
-const { ADD_PEER } = require('../../shared/actions/actions')
+const { ADD_PEER } = require('../actions/actions')
 
 const joinRoom = (config, socket, io) => {
     const { room: roomID } = config
