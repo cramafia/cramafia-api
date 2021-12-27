@@ -8,9 +8,10 @@
         "rootDir": "src",
         "outDir": "dist",
         "moduleResolution": "node",
-        "allowJs": true, 
+        "allowJs": true,
         "paths": {
-            "*": ["node_modules/*"]
+            "*": ["node_modules/*"],
+            "src/*": ["./src/*"]
         },
 
         "strict": true,
@@ -19,13 +20,11 @@
         "forceConsistentCasingInFileNames": true,
         "noImplicitAny": true,
         "noImplicitReturns": false,
-        "noImplicitOverride": true, 
+        "noImplicitOverride": true,
 
         "incremental": true,
         "tsBuildInfoFile": "dist/.tsbuildinfo",
         "preserveConstEnums": true
     },
-    "include": [
-        "src/**/*"
-    ]
+    "include": ["src/**/*"]
 }

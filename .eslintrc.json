@@ -10,9 +10,7 @@
         "ecmaVersion": 12,
         "sourceType": "module"
     },
-    "plugins": [
-        "@typescript-eslint"
-    ],
+    "plugins": ["@typescript-eslint"],
     "rules": {
         "object-curly-spacing": ["error", "always"],
         "semi": ["error", "never"],

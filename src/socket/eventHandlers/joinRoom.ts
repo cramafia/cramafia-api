@@ -1,6 +1,7 @@
-const { ADD_PEER } = require('../actions/actions')
+import { SocketEventHandler } from 'src/services/types'
+import { SocketActions } from '../actions/actions'
 
-const joinRoom = (config, socket, io) => {
+export const joinRoom: SocketEventHandler = (config, socket, io) => {
     const { room: roomID } = config
     const { rooms: joinedRooms } = socket
 
@@ -11,12 +12,12 @@ const joinRoom = (config, socket, io) => {
     const clients = Array.from(io.sockets.adapter.rooms.get(roomID) || [])
 
     clients.forEach((clientID) => {
-        io.to(clientID).emit(ADD_PEER, {
+        io.to(clientID).emit(SocketActions.ADD_PEER, {
             peerID: socket.id,
             createOffer: false,
         })
 
-        socket.emit(ADD_PEER, {
+        socket.emit(SocketActions.ADD_PEER, {
             peerID: clientID,
             createOffer: true,
         })
@@ -24,5 +25,3 @@ const joinRoom = (config, socket, io) => {
 
     socket.join(roomID)
 }
-
-module.exports = joinRoom

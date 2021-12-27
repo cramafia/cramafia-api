@@ -1,4 +1,4 @@
-const authResponses = {
+export const authResponses = {
     registration: {
         success: {
             message: 'Пользователь успешно создан',
@@ -23,8 +23,4 @@ const authResponses = {
             message: 'Данное имя пользователся не занято',
         },
     },
-}
-
-module.exports = {
-    authResponses,
 }

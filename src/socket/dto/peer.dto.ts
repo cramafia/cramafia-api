@@ -1,14 +1,14 @@
 export type ClientSignal = {
-    signalData: any,
+    signalData: any
     addresseeUid: number
 }
 
 export type ServerSignal = {
-    signalData: any,
+    signalData: any
     addresserUid: number
 }
 
 export type ConnectToData = {
-    uids: number[],
+    uids: number[]
     initiate: boolean
 }

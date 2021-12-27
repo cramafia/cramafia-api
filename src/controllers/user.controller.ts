@@ -1,7 +1,8 @@
-const { UserModel } = require('../models/user.model')
+import { UserModel } from 'src/models/user.model'
+import { User } from 'src/schemes/user.scheme'
 
-class UserController {
-    static async isExist(username) {
+export class UserController {
+    static async isExist(username: string) {
         try {
             return !!(await UserModel.findOne({ username }))
         } catch (e) {
@@ -9,7 +10,7 @@ class UserController {
         }
     }
 
-    static async create(user) {
+    static async create(user: User) {
         try {
             await (await UserModel.create({ ...user })).save()
         } catch (e) {
@@ -17,7 +18,7 @@ class UserController {
         }
     }
 
-    static async findUserByUsername(username) {
+    static async findUserByUsername(username: string) {
         try {
             return await UserModel.findOne({ username })
         } catch (e) {
@@ -25,15 +26,11 @@ class UserController {
         }
     }
 
-    static async authorizeUser(user) {
+    static async authorizeUser(user: User) {
         try {
             return await UserModel.findOne({ ...user })
         } catch (e) {
             throw e
         }
     }
-}
-
-module.exports = {
-    UserController,
 }
