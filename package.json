@@ -9,7 +9,7 @@
         "tsc-install": "npm i -g tsc",
         "build": "npm run build-ts && npm run lint",
         "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix",
-        "test": "npx eslint ./",
+        "prettier": "npx prettier ./src -w",
         "dev:watch": "concurrently \"npm run watch-ts\" \"npm run dev:start\"",
         "dev:start": "set NODE_PATH=./dist&& nodemon dist/index.js",
         "start": "set NODE_PATH=./dist&& node dist/index.js"

@@ -38,7 +38,7 @@ export class PeerController {
         })
 
         const self: PeerController = this
-        const signalHandler = function (data: ClientSignal) {
+        const signalHandler = function(data: ClientSignal) {
             const addresseeIndex = self.peerIndexByUid(data.addresseeUid)
             self.peerSockets[addresseeIndex].emit(PeerAction.Signal, <
                 ServerSignal

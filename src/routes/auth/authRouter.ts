@@ -12,13 +12,13 @@ authRouter.post(
     routes.auth.registr,
     ...registerValidators,
     isUserExist,
-    register
+    register,
 )
 authRouter.post(
     routes.auth.isUserExist,
     isUserExist,
     (_: Request, res: Response) =>
-        res.status(200).json(authResponses.isUserExist.notExist)
+        res.status(200).json(authResponses.isUserExist.notExist),
 )
 authRouter.post(routes.auth.authenticate, authenticate)
 

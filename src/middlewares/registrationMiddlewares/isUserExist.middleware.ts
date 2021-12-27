@@ -5,7 +5,7 @@ import { UserController } from 'controllers/user.controller'
 export const isUserExist = async (
     req: Request,
     res: Response,
-    next: NextFunction
+    next: NextFunction,
 ) => {
     try {
         if (await UserController.isExist(req.body.username)) {
