@@ -1,4 +1,4 @@
-const authResponses = {
+export const authResponses = {
     registration: {
         success: {
             message: 'Пользователь успешно создан',
@@ -25,6 +25,4 @@ const authResponses = {
     },
 }
 
-module.exports = {
-    authResponses,
-}
+export const generalError = 'Oops, something went wrong.'
