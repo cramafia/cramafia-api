@@ -10,7 +10,7 @@ import { socketEvents } from './socket/eventHandlers'
 
 const app = express()
 const server = http.createServer(app)
-const Socket = new SocketController(server)
+export const Socket = new SocketController(server)
 
 const port = process.env.PORT || 3000
 
@@ -29,7 +29,3 @@ server.listen(port.toString(), async () => {
         throw e
     }
 })
-
-module.exports = {
-    Socket,
-}

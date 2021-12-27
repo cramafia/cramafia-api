@@ -24,3 +24,5 @@ export const authResponses = {
         },
     },
 }
+
+export const generalError = 'Oops, something went wrong.'

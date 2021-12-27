@@ -10,8 +10,7 @@
         "moduleResolution": "node",
         "allowJs": true,
         "paths": {
-            "*": ["node_modules/*"],
-            "src/*": ["./src/*"]
+            "*": ["node_modules/*", "./src/*"]
         },
 
         "strict": true,

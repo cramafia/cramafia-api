@@ -5,7 +5,7 @@ export type User = {
     password: string
 }
 
-export const userSchema = new Schema({
+export const userSchema = new Schema<User>({
     username: { type: String, required: true, maxLength: 16, minLength: 4 },
     password: { type: String, required: true },
 })

@@ -1,9 +1,10 @@
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
-const { UserController } = require('../../../controllers/user.controller')
-const { authResponses } = require('../../../app-constants/responses')
+import { Request, Response } from 'express'
+import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+import { authResponses, generalError } from 'app-constants/responses'
+import { UserController } from 'controllers/user.controller'
 
-const authenticate = async (req, res) => {
+export const authenticate = async (req: Request, res: Response) => {
     try {
         const { username, password } = req.body
 
@@ -19,14 +20,10 @@ const authenticate = async (req, res) => {
             return res.status(400).json(authResponses.login.incorrectData)
         }
 
-        const token = jwt.sign({ ...user }, process.env.JWT_SECRET)
+        const token = jwt.sign({ ...user }, process.env.JWT_SECRET || '')
 
         return res.status(200).json({ ...authResponses.login.success, token })
     } catch (e) {
-        res.status(500).json({ message: e.message })
+        res.status(500).json({ message: generalError })
     }
-}
-
-module.exports = {
-    authenticate,
 }

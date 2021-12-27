@@ -1,6 +1,6 @@
 import { Server, Socket } from 'socket.io'
 import { Server as HttpServer } from 'http'
-import { SocketEventHandlers } from 'src/services/types'
+import { SocketEventHandlers } from 'services/types'
 
 export class SocketController {
     io: Server

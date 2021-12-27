@@ -1,5 +1,5 @@
-import { UserModel } from 'src/models/user.model'
-import { User } from 'src/schemes/user.scheme'
+import { UserModel } from 'models/user.model'
+import { User } from 'schemes/user.scheme'
 
 export class UserController {
     static async isExist(username: string) {

@@ -3,4 +3,5 @@ package-lock.json
 test_queries.http
 .env
 .idea
+.vscode
 dist

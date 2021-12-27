@@ -1,4 +1,4 @@
-import { SocketEventHandler } from 'src/services/types'
+import { SocketEventHandler } from 'services/types'
 import { SocketActions } from '../actions/actions'
 
 export const joinRoom: SocketEventHandler = (config, socket, io) => {

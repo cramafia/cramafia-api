@@ -9,7 +9,3 @@ export type SocketEventHandler = (
 ) => void
 
 export type SocketEventHandlers = Record<string, SocketEventHandler>
-
-export type ApiError = {
-    message: string
-}

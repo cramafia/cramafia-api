@@ -1,4 +1,4 @@
-import { SocketEventHandlers } from 'src/services/types'
+import { SocketEventHandlers } from 'services/types'
 import { SocketActions } from '../actions/actions'
 import { joinRoom } from './joinRoom'
 

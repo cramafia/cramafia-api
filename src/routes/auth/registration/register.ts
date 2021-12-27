@@ -1,10 +1,11 @@
-const bcrypt = require('bcrypt')
-const { salt } = require('../../../app-constants/constants')
-const { UserController } = require('../../../controllers/user.controller')
-const { authResponses } = require('../../../app-constants/responses')
-const { validationResult } = require('express-validator')
+import { Request, Response } from 'express'
+import bcrypt from 'bcrypt'
+import { validationResult } from 'express-validator'
+import { salt } from 'app-constants/constants'
+import { authResponses, generalError } from 'app-constants/responses'
+import { UserController } from 'controllers/user.controller'
 
-const register = async (req, res) => {
+export const register = async (req: Request, res: Response) => {
     try {
         const { username, password } = req.body
         const errors = validationResult(req)
@@ -23,10 +24,6 @@ const register = async (req, res) => {
 
         res.status(200).json(authResponses.registration.success)
     } catch (e) {
-        res.status(500).json({ message: e.message })
+        res.status(500).json({ message: generalError })
     }
-}
-
-module.exports = {
-    register,
 }
