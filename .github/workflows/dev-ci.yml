@@ -21,7 +21,7 @@ jobs:
 
         steps:
             - name: dpl install
-              run: gem install dpl
+              run: apt-get update -qy && apt-get install -y ruby-dev && dpl install
 
             - name: Heroku deploy
               run: dpl --provider=heroku --app=${{ secrets.HEROKU_APP_STAGING }} --api-key=${{ secrets.HEROKU_API_KEY }}
