@@ -1,0 +1,24 @@
+name: Dev-CI
+
+on:
+    push:
+        branches: [dev]
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Install packages
+              run: npm i
+
+            - name: Run build
+              run: npm run build
+    staging-deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Heroku deploy
+              run: dpl --provider=heroku --app=${{ secrets.HEROKU_APP_STAGING }} --api-key=${{ secrets.HEROKU_API_KEY }}
