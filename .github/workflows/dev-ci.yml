@@ -20,5 +20,8 @@ jobs:
         runs-on: ubuntu-latest
 
         steps:
+            - name: dpl install
+              run: gem install dpl
+
             - name: Heroku deploy
               run: dpl --provider=heroku --app=${{ secrets.HEROKU_APP_STAGING }} --api-key=${{ secrets.HEROKU_API_KEY }}
