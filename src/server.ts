@@ -11,6 +11,7 @@ async function server() {
     .setTitle('cramafia-api')
     .setDescription('Documentation')
     .setVersion('1.0.0')
+    .addBearerAuth()
     .build()
   const documentation = SwaggerModule.createDocument(app, config)
   SwaggerModule.setup('/api/docs', app, documentation)
