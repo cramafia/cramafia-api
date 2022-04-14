@@ -41,8 +41,10 @@ export class UsersController {
   @ApiBearerAuth()
   @Post('create')
   @HttpCode(HttpStatus.CREATED)
-  createUser(@Body() createUserDto: CreateUserDto): Promise<UserDto> {
-    return this.usersService.createUser(createUserDto)
+  async createUser(@Body() createUserDto: CreateUserDto): Promise<UserDto> {
+    return this.usersService.getUserData(
+      await this.usersService.createUser(createUserDto)
+    )
   }
 
   @ApiOperation({ summary: 'Get user by username' })
@@ -55,7 +57,9 @@ export class UsersController {
   @ApiBearerAuth()
   @Get(':username')
   @HttpCode(HttpStatus.OK)
-  getUserByUsername(@Param('username') username): Promise<UserDto> {
-    return this.usersService.getUserByUsername(username)
+  async getUserByUsername(@Param('username') username): Promise<UserDto> {
+    return this.usersService.getUserData(
+      await this.usersService.getUserByUsername(username)
+    )
   }
 }

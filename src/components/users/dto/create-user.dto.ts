@@ -11,6 +11,8 @@ export class CreateUserDto {
   @Length(4, 16, { message: 'Shoud be no less than 4 and no more than 16' })
   readonly password: string
 
-  @ApiProperty()
+  @ApiProperty({
+    required: false,
+  })
   readonly refresh_token?: string | null
 }
