@@ -9,4 +9,7 @@ export class UserDto {
 
   @ApiProperty()
   readonly password: string
+
+  @ApiProperty()
+  readonly refresh_token?: string | null
 }
