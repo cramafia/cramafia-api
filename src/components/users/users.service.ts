@@ -1,25 +1,28 @@
-import {
-  ConsoleLogger,
-  HttpException,
-  HttpStatus,
-  Injectable,
-} from '@nestjs/common'
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
 import { CreateUserDto } from './dto/create-user.dto'
 import { User, UserDocument } from './schemas/user.schema'
-import { UserDto } from './dto/respone-user.dto'
 import { UpdateUserDto } from './dto/update-user.dto'
+import { UserDto } from './dto/respone-user.dto'
 
 @Injectable()
 export class UsersService {
   constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
   async getAll(): Promise<UserDto[]> {
-    return this.userModel.find().exec()
+    const allUsers = await this.userModel.find().exec()
+    return allUsers.map(this.getUserData)
   }
 
-  async createUser(createUserDto: CreateUserDto): Promise<UserDto> {
+  getUserData(user: User): UserDto {
+    return {
+      username: user.username,
+      _id: user._id,
+    }
+  }
+
+  async createUser(createUserDto: CreateUserDto): Promise<User> {
     const user = await this.getUserByUsername(createUserDto.username)
     if (!!user) {
       throw new HttpException(
@@ -50,7 +53,7 @@ export class UsersService {
     return this.userModel.findOneAndUpdate({ username }, updateUserDto)
   }
 
-  async getUserByUsername(username: string): Promise<UserDto> {
+  async getUserByUsername(username: string): Promise<User> {
     return this.userModel.findOne({ username: username }).exec()
   }
 }

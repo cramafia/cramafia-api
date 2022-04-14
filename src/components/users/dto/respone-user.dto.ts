@@ -6,10 +6,4 @@ export class UserDto {
 
   @ApiProperty()
   readonly _id: string
-
-  @ApiProperty()
-  readonly password: string
-
-  @ApiProperty()
-  readonly refresh_token?: string | null
 }
