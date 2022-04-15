@@ -51,7 +51,7 @@ export class UsersController {
   @HttpCode(HttpStatus.OK)
   async getCurrentUser(@Headers('Authorization') auth: string): Promise<User> {
     const token = auth.split(' ')[1]
-    return this.usersService.getUserByToken(token || '')
+    return this.usersService.getUserByToken(token)
   }
 
   @ApiOperation({ summary: 'Create new user' })
