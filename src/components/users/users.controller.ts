@@ -2,6 +2,7 @@ import {
   Body,
   Controller,
   Get,
+  Headers,
   HttpCode,
   HttpStatus,
   Param,
@@ -9,8 +10,7 @@ import {
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common'
-import { CreateUserDto } from './dto/create-user.dto'
-import { UsersService } from './users.service'
+import * as bcrypt from 'bcryptjs'
 import {
   ApiBearerAuth,
   ApiOperation,
@@ -18,6 +18,9 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger'
+import { SALT } from 'src/constants'
+import { CreateUserDto } from './dto/create-user.dto'
+import { UsersService } from './users.service'
 import { JwtAuthGuard } from '../auth/jwt-auth.guard'
 import { User } from './schemas/user.schema'
 import { ResponseUserDto } from './dto/respone-user.dto'
@@ -39,6 +42,18 @@ export class UsersController {
     return this.usersService.getAll()
   }
 
+  @ApiOperation({ summary: 'Get current users' })
+  @ApiResponse({ status: 200, type: [ResponseUserDto] })
+  @UseGuards(JwtAuthGuard)
+  @UseInterceptors(UsersInterceptor)
+  @ApiBearerAuth()
+  @Get('me')
+  @HttpCode(HttpStatus.OK)
+  async getCurrentUser(@Headers('Authorization') auth: string): Promise<User> {
+    const token = auth.split(' ')[1]
+    return this.usersService.getUserByToken(token || '')
+  }
+
   @ApiOperation({ summary: 'Create new user' })
   @ApiResponse({ status: 200, type: ResponseUserDto })
   @UseGuards(JwtAuthGuard)
@@ -47,7 +62,11 @@ export class UsersController {
   @Post('create')
   @HttpCode(HttpStatus.CREATED)
   async createUser(@Body() createUserDto: CreateUserDto): Promise<User> {
-    return this.usersService.createUser(createUserDto)
+    const hashPassword = await bcrypt.hash(createUserDto.password, SALT)
+    return this.usersService.createUser({
+      ...createUserDto,
+      password: hashPassword,
+    })
   }
 
   @ApiOperation({ summary: 'Get user by username' })
