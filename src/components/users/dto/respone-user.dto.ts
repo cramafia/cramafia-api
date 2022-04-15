@@ -1,5 +1,4 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { UserStatus } from '../schemas/user.schema'
 
 export class ResponseUserDto {
   @ApiProperty()
@@ -7,7 +6,4 @@ export class ResponseUserDto {
 
   @ApiProperty()
   readonly username: string
-
-  @ApiProperty()
-  readonly status: UserStatus
 }
