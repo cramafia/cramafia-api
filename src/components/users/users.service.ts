@@ -1,6 +1,4 @@
 import {
-  HttpException,
-  HttpStatus,
   Injectable,
   NotFoundException,
   ForbiddenException,
@@ -13,7 +11,19 @@ import { UpdateUserDto } from './dto/update-user.dto'
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
+  private _liveUsers: number
+
+  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {
+    this._liveUsers = 0
+  }
+
+  set liveUsers(nextLiveUsers: number) {
+    this._liveUsers = nextLiveUsers
+  }
+
+  get liveUsers() {
+    return this._liveUsers
+  }
 
   async getAll(): Promise<User[]> {
     return this.userModel.find().exec()
