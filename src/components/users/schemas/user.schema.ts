@@ -4,6 +4,11 @@ import { Document } from 'mongoose'
 
 export type UserDocument = User & Document
 
+export enum UserStatus {
+  OFFLINE = 'OFFLINE',
+  ONLINE = 'ONLINE',
+}
+
 @Schema()
 export class User {
   @ApiProperty({ example: '12345678' })
@@ -17,6 +22,10 @@ export class User {
   @ApiProperty({ example: '12345678' })
   @Prop({ required: true })
   password: string
+
+  @ApiProperty({ example: UserStatus.OFFLINE })
+  @Prop({ required: true, default: UserStatus.OFFLINE })
+  status: UserStatus
 
   @ApiProperty({ example: 'asd' })
   _id: string
