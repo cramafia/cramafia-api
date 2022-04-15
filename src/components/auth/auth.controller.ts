@@ -18,14 +18,14 @@ export class AuthController {
   @ApiOperation({ summary: 'Login' })
   @ApiResponse({ status: 200, type: TokensDto })
   @Post('/login')
-  login(@Body() userDto: CreateUserDto) {
+  login(@Body() userDto: CreateUserDto): Promise<TokensDto> {
     return this.authService.login(userDto)
   }
 
   @ApiOperation({ summary: 'Registration' })
   @ApiResponse({ status: 200, type: TokensDto })
   @Post('/registration')
-  registration(@Body() userDto: CreateUserDto) {
+  registration(@Body() userDto: CreateUserDto): Promise<TokensDto> {
     return this.authService.registration(userDto)
   }
 
@@ -34,7 +34,7 @@ export class AuthController {
   @ApiBearerAuth()
   @UseGuards(JwtAuthGuard)
   @Get('/refresh-token/:refresh_token')
-  refreshToken(@Param('refresh_token') rt: string) {
+  refreshToken(@Param('refresh_token') rt: string): Promise<TokensDto> {
     return this.authService.refreshToken(rt)
   }
 }
