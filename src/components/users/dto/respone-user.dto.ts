@@ -2,8 +2,8 @@ import { ApiProperty } from '@nestjs/swagger'
 
 export class ResponseUserDto {
   @ApiProperty()
-  readonly username: string
+  readonly _id: string
 
   @ApiProperty()
-  readonly _id: string
+  readonly username: string
 }
