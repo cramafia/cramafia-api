@@ -2,8 +2,8 @@ import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { MongooseModule } from '@nestjs/mongoose'
 import { AuthModule } from './components/auth/auth.module'
-import { SocketsModule } from './components/sockets/sockets.module'
 import { UsersModule } from './components/users/users.module'
+import { SocketsGateway } from './components/sockets/sockets.gateway'
 
 @Module({
   imports: [
@@ -12,10 +12,9 @@ import { UsersModule } from './components/users/users.module'
     }),
     UsersModule,
     AuthModule,
-    SocketsModule,
     MongooseModule.forRoot(process.env.DB_CONNECTION_URL || ''),
   ],
   controllers: [],
-  providers: [],
+  providers: [SocketsGateway],
 })
 export class AppModule {}
