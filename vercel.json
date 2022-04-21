@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "env": {
+    "DB_CONNECTION_URL": "@DB_CONNECTION_URL",
+    "JWT_REFRESH": "@JWT_REFRESH",
+    "JWT_SECRET": "@JWT_SECRET"
+  },
+  "builds": [
+    {
+      "src": "src/server.ts",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "src/server.js",
+      "methods": ["GET", "POST", "PUT", "DELETE"]
+    }
+  ]
+}
