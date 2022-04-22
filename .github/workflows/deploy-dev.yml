@@ -16,5 +16,5 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
         with:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "cramafia-api-prod"
+          heroku_app_name: "cramafia-api-dev"
           heroku_email: "holupkoweb@gmail.com"
