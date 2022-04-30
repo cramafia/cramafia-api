@@ -61,9 +61,14 @@ export class AuthService {
       })
     }
 
-    this.usersService.updateUser({ refresh_token: rt }, user.username)
+    const newTokens = await this.generateTokens(user)
 
-    return this.generateTokens(user)
+    this.usersService.updateUser(
+      { refresh_token: newTokens.refresh_token },
+      user.username
+    )
+
+    return newTokens
   }
 
   private async generateTokens(user: CreateUserDto): Promise<TokensDto> {

@@ -1,13 +1,7 @@
-import { Body, Controller, Get, Post, Param, UseGuards } from '@nestjs/common'
-import {
-  ApiBearerAuth,
-  ApiOperation,
-  ApiResponse,
-  ApiTags,
-} from '@nestjs/swagger'
+import { Body, Controller, Post, Param } from '@nestjs/common'
+import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
 import { CreateUserDto } from '../users/dto/create-user.dto'
 import { AuthService } from './auth.service'
-import { JwtAuthGuard } from './jwt-auth.guard'
 import { TokensDto } from './dto/tokents.dto'
 
 @ApiTags('Authorization Controller')
@@ -31,7 +25,7 @@ export class AuthController {
 
   @ApiOperation({ summary: 'Refresh token' })
   @ApiResponse({ status: 200, type: TokensDto })
-  @Get('/refresh-token/:refresh_token')
+  @Post('/refresh-token/:refresh_token')
   refreshToken(@Param('refresh_token') rt: string): Promise<TokensDto> {
     return this.authService.refreshToken(rt)
   }
