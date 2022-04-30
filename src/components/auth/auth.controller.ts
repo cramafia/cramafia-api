@@ -31,8 +31,6 @@ export class AuthController {
 
   @ApiOperation({ summary: 'Refresh token' })
   @ApiResponse({ status: 200, type: TokensDto })
-  @ApiBearerAuth()
-  @UseGuards(JwtAuthGuard)
   @Get('/refresh-token/:refresh_token')
   refreshToken(@Param('refresh_token') rt: string): Promise<TokensDto> {
     return this.authService.refreshToken(rt)
