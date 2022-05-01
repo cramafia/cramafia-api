@@ -5,52 +5,22 @@ import {
 } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
-import { v2 as cloudinary } from 'cloudinary'
 import { CreateUserDto } from './dto/create-user.dto'
 import { User, UserDocument } from './schemas/user.schema'
 import { UpdateUserDto } from './dto/update-user.dto'
 import { JwtService } from '@nestjs/jwt'
+import { CloudService } from '../cloud/cloud.service'
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectModel(User.name) private userModel: Model<UserDocument>,
-    private readonly jwtService: JwtService
+    private readonly jwtService: JwtService,
+    private readonly cloudService: CloudService
   ) {}
 
   async getAll(): Promise<User[]> {
     return this.userModel.find().exec()
-  }
-
-  async getRandomDefaultIcon() {
-    try {
-      const { resources } = await cloudinary.api.resources({
-        resource_type: 'image',
-        type: 'upload',
-        prefix: 'cramafia/default_icons/',
-      })
-      const randomIndex = Math.round(Math.random() * (resources.length - 1))
-
-      return resources[randomIndex].url
-    } catch (e) {
-      throw new ForbiddenException({
-        message: e.error.message,
-      })
-    }
-  }
-
-  async uploadUserAvatar(image: string) {
-    try {
-      const { url } = await cloudinary.uploader.upload(image, {
-        folder: 'cramafia/users_avatars',
-      })
-
-      return url
-    } catch (e) {
-      throw new ForbiddenException({
-        message: e.error.message,
-      })
-    }
   }
 
   async getUserByToken(token: string) {
@@ -68,7 +38,7 @@ export class UsersService {
   async createUser(createUserDto: CreateUserDto): Promise<User> {
     await this.getUserByUsername(createUserDto.username, true)
 
-    const icon_url = await this.getRandomDefaultIcon()
+    const icon_url = await this.cloudService.getRandomDefaultIcon()
 
     const newUser = new this.userModel({ ...createUserDto, icon_url })
     return newUser.save()
@@ -78,14 +48,21 @@ export class UsersService {
     await this.getUserByUsername(username)
 
     if (updateUserDto.avatarImage) {
-      const url = await this.uploadUserAvatar(updateUserDto.avatarImage)
+      const url = await this.cloudService.uploadUserAvatar(
+        updateUserDto.avatarImage
+      )
       return this.userModel.findOneAndUpdate(
         { username },
-        { ...updateUserDto, icon_url: url }
+        { ...updateUserDto, icon_url: url },
+        {
+          new: true,
+        }
       )
     }
 
-    return this.userModel.findOneAndUpdate({ username }, updateUserDto)
+    return this.userModel.findOneAndUpdate({ username }, updateUserDto, {
+      new: true,
+    })
   }
 
   async getUserByUsername(
