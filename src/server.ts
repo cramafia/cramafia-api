@@ -1,12 +1,16 @@
 import { ValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
+import * as bodyParser from 'body-parser'
 import { v2 as cloudinary } from 'cloudinary'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 import { AppModule } from './app.module'
+import { MAX_BODY_SIZE } from './constants'
 
 async function server() {
   const PORT = process.env.PORT || 5000
   const app = await NestFactory.create(AppModule, { cors: true })
+  app.use(bodyParser.json({ limit: MAX_BODY_SIZE }))
+  app.use(bodyParser.urlencoded({ limit: MAX_BODY_SIZE, extended: true }))
 
   cloudinary.config({
     cloud_name: process.env.CLOUDINARY_NAME,
