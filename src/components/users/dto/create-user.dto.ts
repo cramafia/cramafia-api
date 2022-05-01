@@ -14,5 +14,10 @@ export class CreateUserDto {
   @ApiProperty({
     required: false,
   })
+  readonly icon_url?: string
+
+  @ApiProperty({
+    required: false,
+  })
   readonly refresh_token?: string | null
 }
