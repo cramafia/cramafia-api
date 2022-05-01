@@ -3,8 +3,9 @@ import {
   SubscribeMessage,
   WebSocketServer,
 } from '@nestjs/websockets'
-import { Server } from 'socket.io'
+import { Server, Socket } from 'socket.io'
 import { UsersService } from '../users/users.service'
+import _ from 'lodash'
 
 @WebSocketGateway({
   cors: {
@@ -12,18 +13,32 @@ import { UsersService } from '../users/users.service'
   },
 })
 export class SocketsGateway {
-  constructor(private readonly usersService: UsersService) {}
+  allActiveSockets: any[] = []
 
   @WebSocketServer() server: Server
 
-  @SubscribeMessage('userConnected')
-  handleEvent() {
-    this.usersService.liveUsers += 1
-    this.server.emit('liveUsersChanged', this.usersService.liveUsers)
+  async emitGetAllSockets() {
+    const allActiveSockets = [...(await this.server.allSockets())].length
+    this.server.emit('getLiveUsersToClient', allActiveSockets)
   }
 
-  handleDisconnect() {
-    this.usersService.liveUsers -= 1
-    this.server.emit('liveUsersChanged', this.usersService.liveUsers)
+  clearSockets() {
+    this.server.socketsJoin('leave')
+    this.server.in('leave').disconnectSockets(true)
+  }
+
+  handleConnection(client: Socket) {
+    console.log(`connected = ${client.id}`)
+    this.emitGetAllSockets()
+  }
+
+  handleDisconnect(client: Socket) {
+    console.log(`disconnected = ${client.id}`)
+    this.emitGetAllSockets()
+  }
+
+  @SubscribeMessage('getLiveUsersToServer')
+  async handleGetLiveUsers() {
+    this.emitGetAllSockets()
   }
 }
