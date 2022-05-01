@@ -5,15 +5,16 @@ import {
   UnauthorizedException,
 } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
-import { Observable } from 'rxjs'
+import { UsersService } from '../users/users.service'
 
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
-  constructor(private readonly jwtService: JwtService) {}
+  constructor(
+    private readonly jwtService: JwtService,
+    private readonly usersService: UsersService
+  ) {}
 
-  canActivate(
-    context: ExecutionContext
-  ): boolean | Promise<boolean> | Observable<boolean> {
+  async canActivate(context: ExecutionContext): Promise<boolean> {
     const req = context.switchToHttp().getRequest()
     try {
       const authHeader = req.headers.authorization
@@ -23,7 +24,7 @@ export class JwtAuthGuard implements CanActivate {
       }
 
       const user = this.jwtService.verify(token)
-      req.user = user
+      req.user = await this.usersService.getUserByUsername(user.username)
       return true
     } catch (e) {
       throw new UnauthorizedException({ message: 'User not authorized' })
