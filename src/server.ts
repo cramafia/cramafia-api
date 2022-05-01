@@ -1,11 +1,19 @@
 import { ValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
+import { v2 as cloudinary } from 'cloudinary'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 import { AppModule } from './app.module'
 
 async function server() {
   const PORT = process.env.PORT || 5000
   const app = await NestFactory.create(AppModule, { cors: true })
+
+  cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+    secure: true,
+  })
 
   const config = new DocumentBuilder()
     .setTitle('cramafia-api')

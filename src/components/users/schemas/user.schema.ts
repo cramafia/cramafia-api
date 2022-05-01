@@ -14,6 +14,10 @@ export class User {
   @Prop({ required: true })
   username: string
 
+  @ApiProperty({ example: 'icon_url' })
+  @Prop({ required: false })
+  icon_url: string
+
   @ApiProperty({ example: '12345678' })
   @Prop({ required: true })
   password: string

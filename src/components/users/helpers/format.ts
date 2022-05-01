@@ -10,9 +10,10 @@ export const format = (
   return formatUser(data)
 }
 
-const formatUser = ({ username, _id }: User): ResponseUserDto => {
+const formatUser = ({ username, _id, icon_url }: User): ResponseUserDto => {
   return {
     username,
+    icon_url,
     _id,
   }
 }

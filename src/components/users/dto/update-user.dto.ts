@@ -1,16 +1,28 @@
 import { ApiProperty } from '@nestjs/swagger'
-import { IsString, Length } from 'class-validator'
 
 export class UpdateUserDto {
-  @ApiProperty()
-  @IsString({ message: 'Should be string' })
+  @ApiProperty({
+    required: false,
+  })
   readonly username?: string
 
-  @ApiProperty()
-  @IsString({ message: 'Should be string' })
-  @Length(4, 16, { message: 'Shoud be no less than 4 and no more than 16' })
+  @ApiProperty({
+    required: false,
+  })
+  readonly icon_url?: string
+
+  @ApiProperty({
+    required: false,
+  })
+  readonly avatarImage?: string
+
+  @ApiProperty({
+    required: false,
+  })
   readonly password?: string
 
-  @ApiProperty()
+  @ApiProperty({
+    required: false,
+  })
   readonly refresh_token?: string | null
 }
