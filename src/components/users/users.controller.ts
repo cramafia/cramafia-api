@@ -1,9 +1,11 @@
 import {
+  Body,
   Controller,
   Get,
   HttpCode,
   HttpStatus,
   Param,
+  Patch,
   Request,
   UseGuards,
   UseInterceptors,
@@ -20,6 +22,7 @@ import { JwtAuthGuard } from '../auth/jwt-auth.guard'
 import { User } from './schemas/user.schema'
 import { ResponseUserDto } from './dto/respone-user.dto'
 import { UsersInterceptor } from './users.interceptor'
+import { UpdateUserDto } from './dto/update-user.dto'
 
 @ApiTags('Users Controller')
 @Controller('users')
@@ -46,6 +49,20 @@ export class UsersController {
   @HttpCode(HttpStatus.OK)
   async getCurrentUser(@Request() { user }: { user: User }): Promise<User> {
     return user
+  }
+
+  @ApiOperation({ summary: 'Update user' })
+  @ApiResponse({ status: 200, type: ResponseUserDto })
+  @UseGuards(JwtAuthGuard)
+  @UseInterceptors(UsersInterceptor)
+  @ApiBearerAuth()
+  @Patch('me/update')
+  @HttpCode(HttpStatus.CREATED)
+  async updateUser(
+    @Body() updateUserDto: UpdateUserDto,
+    @Request() { user }: { user: User }
+  ): Promise<User> {
+    return this.usersService.updateUser(updateUserDto, user.username)
   }
 
   @ApiOperation({ summary: 'Get user by username' })

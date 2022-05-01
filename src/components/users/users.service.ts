@@ -8,10 +8,14 @@ import { Model } from 'mongoose'
 import { CreateUserDto } from './dto/create-user.dto'
 import { User, UserDocument } from './schemas/user.schema'
 import { UpdateUserDto } from './dto/update-user.dto'
+import { CloudService } from '../cloud/cloud.service'
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
+  constructor(
+    @InjectModel(User.name) private userModel: Model<UserDocument>,
+    private readonly cloudService: CloudService
+  ) {}
 
   async getAll(): Promise<User[]> {
     return this.userModel.find().exec()
@@ -20,14 +24,31 @@ export class UsersService {
   async createUser(createUserDto: CreateUserDto): Promise<User> {
     await this.getUserByUsername(createUserDto.username, true)
 
-    const newUser = new this.userModel(createUserDto)
+    const icon_url = await this.cloudService.getRandomDefaultIcon()
+
+    const newUser = new this.userModel({ ...createUserDto, icon_url })
     return newUser.save()
   }
 
   async updateUser(updateUserDto: UpdateUserDto, username: string) {
     await this.getUserByUsername(username)
 
-    return this.userModel.findOneAndUpdate({ username }, updateUserDto)
+    if (updateUserDto.avatarImage) {
+      const url = await this.cloudService.uploadUserAvatar(
+        updateUserDto.avatarImage
+      )
+      return this.userModel.findOneAndUpdate(
+        { username },
+        { ...updateUserDto, icon_url: url },
+        {
+          new: true,
+        }
+      )
+    }
+
+    return this.userModel.findOneAndUpdate({ username }, updateUserDto, {
+      new: true,
+    })
   }
 
   async getUserByUsername(

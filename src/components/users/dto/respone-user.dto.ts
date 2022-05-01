@@ -6,4 +6,9 @@ export class ResponseUserDto {
 
   @ApiProperty()
   readonly username: string
+
+  @ApiProperty({
+    required: false,
+  })
+  readonly icon_url?: string
 }
