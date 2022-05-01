@@ -1,11 +1,11 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
-import { CreateUserDto } from '../users/dto/create-user.dto'
 import { UsersService } from '../users/users.service'
 import * as bcrypt from 'bcryptjs'
 import { SALT, REFRESH_TOKEN_EXPIRES } from '../../constants'
 import { TokensDto } from './dto/tokents.dto'
 import { User } from '../users/schemas/user.schema'
+import { UserDto } from '../users/dto/user.dto'
 
 @Injectable()
 export class AuthService {
@@ -14,7 +14,7 @@ export class AuthService {
     private readonly jwtService: JwtService
   ) {}
 
-  async login(userDto: CreateUserDto): Promise<TokensDto> {
+  async login(userDto: UserDto): Promise<TokensDto> {
     const user = await this.validateUser(userDto)
     const tokens = await this.generateTokens(user)
 
@@ -26,7 +26,7 @@ export class AuthService {
     return tokens
   }
 
-  async registration(userDto: CreateUserDto): Promise<TokensDto> {
+  async registration(userDto: UserDto): Promise<TokensDto> {
     const tokens = await this.generateTokens(userDto)
     const hashPassword = await bcrypt.hash(userDto.password, SALT)
 
@@ -71,7 +71,7 @@ export class AuthService {
     return newTokens
   }
 
-  private async generateTokens(user: CreateUserDto): Promise<TokensDto> {
+  private async generateTokens(user: UserDto): Promise<TokensDto> {
     const payload = { username: user.username }
 
     return {
@@ -83,7 +83,7 @@ export class AuthService {
     }
   }
 
-  private async validateUser(userDto: CreateUserDto): Promise<User> {
+  private async validateUser(userDto: UserDto): Promise<User> {
     const user = await this.usersService.getUserByUsername(userDto.username)
     const passwordEq = await bcrypt.compare(userDto.password, user.password)
 
