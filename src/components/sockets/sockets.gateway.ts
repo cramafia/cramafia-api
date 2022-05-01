@@ -14,8 +14,6 @@ import _ from 'lodash'
 })
 export class SocketsGateway {
   allActiveSockets: any[] = []
-  curr: any = []
-  constructor(private readonly usersService: UsersService) {}
 
   @WebSocketServer() server: Server
 

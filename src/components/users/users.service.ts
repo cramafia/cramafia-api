@@ -12,22 +12,10 @@ import { JwtService } from '@nestjs/jwt'
 
 @Injectable()
 export class UsersService {
-  private _liveUsers: number
-
   constructor(
     @InjectModel(User.name) private userModel: Model<UserDocument>,
     private readonly jwtService: JwtService
-  ) {
-    this._liveUsers = 0
-  }
-
-  set liveUsers(nextLiveUsers: number) {
-    this._liveUsers = nextLiveUsers
-  }
-
-  get liveUsers() {
-    return this._liveUsers
-  }
+  ) {}
 
   async getAll(): Promise<User[]> {
     return this.userModel.find().exec()
