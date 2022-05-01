@@ -48,7 +48,7 @@ export class UsersController {
   @Get('me')
   @HttpCode(HttpStatus.OK)
   async getCurrentUser(@Request() { user }: { user: User }): Promise<User> {
-    return user
+    return this.usersService.getUserByUsername(user.username)
   }
 
   @ApiOperation({ summary: 'Update user' })
