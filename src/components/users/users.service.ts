@@ -8,29 +8,13 @@ import { Model } from 'mongoose'
 import { CreateUserDto } from './dto/create-user.dto'
 import { User, UserDocument } from './schemas/user.schema'
 import { UpdateUserDto } from './dto/update-user.dto'
-import { JwtService } from '@nestjs/jwt'
 
 @Injectable()
 export class UsersService {
-  constructor(
-    @InjectModel(User.name) private userModel: Model<UserDocument>,
-    private readonly jwtService: JwtService
-  ) {}
+  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
   async getAll(): Promise<User[]> {
     return this.userModel.find().exec()
-  }
-
-  async getUserByToken(token: string) {
-    const user = this.jwtService.verify(token)
-
-    if (!user) {
-      throw new ForbiddenException({
-        message: 'This user does not exist!',
-      })
-    }
-
-    return this.getUserByUsername(user.username)
   }
 
   async createUser(createUserDto: CreateUserDto): Promise<User> {

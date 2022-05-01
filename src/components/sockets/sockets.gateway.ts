@@ -4,8 +4,6 @@ import {
   WebSocketServer,
 } from '@nestjs/websockets'
 import { Server, Socket } from 'socket.io'
-import { UsersService } from '../users/users.service'
-import _ from 'lodash'
 
 @WebSocketGateway({
   cors: {
