@@ -4,8 +4,8 @@ import {
   WebSocketServer,
 } from '@nestjs/websockets'
 import { Server, Socket } from 'socket.io'
+import { CreateLobbyDto } from '../lobbies/dto/create-lobby.dto'
 import { LobbiesService } from '../lobbies/lobbies.service'
-import { Lobby } from '../lobbies/schemas/lobby.schema'
 
 @WebSocketGateway({
   cors: {
@@ -54,7 +54,7 @@ export class SocketsGateway {
   }
 
   @SubscribeMessage('createLobby')
-  async handleCreateLobby(client: Socket, data: Lobby) {
+  async handleCreateLobby(client: Socket, data: CreateLobbyDto) {
     await this.lobbiesService.createLobby(data)
     this.emitGetAllLobbies(client)
   }
