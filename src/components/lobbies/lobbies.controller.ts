@@ -1,11 +1,18 @@
-import { Body, Controller, Post, Param, Get, UseGuards } from '@nestjs/common'
+import {
+  Controller,
+  Get,
+  UseGuards,
+  HttpCode,
+  HttpStatus,
+} from '@nestjs/common'
 import {
   ApiBearerAuth,
   ApiOperation,
-  ApiResponse,
   ApiTags,
+  ApiResponse,
 } from '@nestjs/swagger'
 import { JwtAuthGuard } from '../auth/jwt-auth.guard'
+import { ResponseLobbyDto } from './dto/response-lobby.dto'
 import { LobbiesService } from './lobbies.service'
 
 @ApiTags('Lobby Controller')
@@ -14,10 +21,12 @@ export class LobbiesController {
   constructor(private readonly lobbiesService: LobbiesService) {}
 
   @ApiOperation({ summary: 'Get all lobbies' })
+  @ApiResponse({ status: 200, type: [ResponseLobbyDto] })
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth()
   @Get('all')
-  getAll() {
+  @HttpCode(HttpStatus.OK)
+  getAll(): Promise<ResponseLobbyDto[]> {
     return this.lobbiesService.getAll()
   }
 }
