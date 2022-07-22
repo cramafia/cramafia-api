@@ -14,4 +14,7 @@ export class ResponseLobbyDto extends CreateLobbyDto {
 
   @ApiProperty()
   readonly players: number
+
+  @ApiProperty()
+  readonly maxPlayers: number
 }

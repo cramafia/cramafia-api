@@ -13,5 +13,8 @@ export class CreateLobbyDto {
   readonly name: string
 
   @ApiProperty()
+  readonly maxPlayers: number
+
+  @ApiProperty()
   readonly privacy: LobbyGamePrivacy.PRIVATE | LobbyGamePrivacy.PUBLIC
 }

@@ -22,6 +22,9 @@ export class Lobby {
   players: number
 
   @Prop()
+  maxPlayers: number
+
+  @Prop()
   status: LobbyGameStatus
 
   @Prop()
